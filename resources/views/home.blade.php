@@ -15,16 +15,16 @@
                     @endif
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="/admin/main_sections">Main Sections</a>
+                            <a href="{{route('main_sections')}}">Main Sections</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="/admin/sections">Sections</a>
+                            <a href="{{route('sections')}}">Sections</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="/admin/products">Products</a>
+                            <a href="{{route('products')}}">Products</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="/admin/carousel_images">Carousel Imagse</a>
+                            <a href="{{route('carousel_images')}}">Carousel Images</a>
                         </li>
                       </ul>
                 </div>

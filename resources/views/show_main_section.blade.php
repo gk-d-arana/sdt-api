@@ -48,7 +48,7 @@
                                 </span>
                                 @enderror
                             </div>
-                            <a href="/{{ $main_section->main_section_image }}"><img  src="/{{$main_section->main_section_image}}" width="200"/></a>
+                            <a href="/api/public/{{ $main_section->main_section_image }}"><img  src="/api/public/{{$main_section->main_section_image}}" width="200"/></a>
                         </div>
 
                         <div class="form-group mb-0">

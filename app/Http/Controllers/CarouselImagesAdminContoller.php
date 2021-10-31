@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CarouselImages;
+use App\Models\MainSection;
 use Illuminate\Http\Request;
 
 class CarouselImagesAdminContoller extends Controller
@@ -18,8 +19,9 @@ class CarouselImagesAdminContoller extends Controller
      */
     public function index()
     {
+        $main_sections = MainSection::all();
         $carousel_images = CarouselImages::all();
-        return view('carousel_images', ["carousel_images"=>$carousel_images]);
+        return view('carousel_images', ["carousel_images"=>$carousel_images, "main_sections"=>$main_sections]);
     }
 
     /**
@@ -42,6 +44,7 @@ class CarouselImagesAdminContoller extends Controller
     {
         $data = $request->validate([
             "carousel_image_image"=>"required",
+            "carousel_main_section"=>"required",
         ]);
         $imageName = null;
         if($request->hasFile('carousel_image_image')){
@@ -49,6 +52,8 @@ class CarouselImagesAdminContoller extends Controller
             $request->file('carousel_image_image')->move(public_path(), $imageName);
             $carousel_image = new CarouselImages();
             $carousel_image->carousel_image=$imageName;
+            $main_section_id = (int)$request->carousel_main_section;
+            $carousel_image->main_section_id = $main_section_id;
             $carousel_image->save();
         }
         return redirect('/admin/carousel_images/')->with('success','Carousel Image Added successfully');

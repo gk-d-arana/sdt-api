@@ -104,7 +104,7 @@
                             <th scope="row">{{ $main_section->id }}</th>
                             <td>{{ $main_section->main_section_name }}</td>
                             <td class="text-center">
-                              <a class="btn btn-primary" href="/admin/main_section/{{$main_section->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
+                              <a class="btn btn-primary" href="/api/public/admin/main_section/{{$main_section->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
                             <a class="btn btn-danger" href="#"
                                 onclick="event.preventDefault();
                                 document.getElementById('delete-form-{{ $main_section->id }}').submit();">

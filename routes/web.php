@@ -38,7 +38,7 @@ Route::post('/admin/section/{id}/', [App\Http\Controllers\SectionAdminController
 #Product Routes
 
 Route::get('/admin/products/', [App\Http\Controllers\ProductAdminController::class, 'index'])->name('products');
-Route::post('/admin/products/', [App\Http\Controllers\productAdminController::class, 'store'])->name('add_product.store');
+Route::post('/admin/products/', [App\Http\Controllers\ProductAdminController::class, 'store'])->name('add_product.store');
 Route::post('/admin/product/{id}/update', [App\Http\Controllers\ProductAdminController::class, 'update'])->name('edit_product.update');
 Route::get('/admin/product/{id}/', [App\Http\Controllers\ProductAdminController::class, 'show'])->name('product-details.show');
 Route::post('/admin/product/{id}/', [App\Http\Controllers\ProductAdminController::class, 'destroy'])->name('delete_product.destroy');
@@ -49,3 +49,24 @@ Route::post('/admin/product/{id}/', [App\Http\Controllers\ProductAdminController
 Route::get('/admin/carousel_images/', [App\Http\Controllers\CarouselImagesAdminContoller::class, 'index'])->name('carousel_images');
 Route::post('/admin/carousel_images/', [App\Http\Controllers\CarouselImagesAdminContoller::class, 'store'])->name('add_carousel_image.store');
 Route::post('/admin/carousel_image/{id}/', [App\Http\Controllers\CarouselImagesAdminContoller::class, 'destroy'])->name('delete_carousel_image.destroy');
+
+
+
+
+Route::get('/update', function () {
+    echo exec("git fetch --all");
+    echo exec("git reset --hard origin/main");
+    echo exec("git pull");
+});
+
+Route::get('/pull', function () {
+    echo exec("git pull");
+});
+
+Route::get('/migrate_db', function () {
+    Artisan::call('migrate:fresh');
+});
+
+Route::get('/seed_db', function () {
+    Artisan::call('db:seed');
+});

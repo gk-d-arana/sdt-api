@@ -44,6 +44,20 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="">
+                                        <select class="form-select form-select-md mb-3" name="carousel_main_section" aria-label=".form-select-lg example">
+                                            <option hidden selected>Choose A Main Section</option>
+                                            @foreach ($main_sections as $main_section)
+                                            <option value="{{ $main_section->id }}">{{ $main_section->main_section_name }}</option>
+                                            @endforeach
+                                          </select>
+
+                                        @error('carousel_main_section')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
 
                                     <div class="form-group mb-0">
                                         <div class="">
@@ -68,6 +82,7 @@
                           <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Carousel Image</th>
+                            <th scope="col">Main Section</th>
                             <th class="text-center" scope="col">Actions</th>
                           </tr>
                         </thead>
@@ -75,7 +90,8 @@
                           @foreach ($carousel_images as $carousel_image)
                           <tr>
                             <th scope="row">{{ $carousel_image->id }}</th>
-                            <td><a target="_blank" href="/{{ $carousel_image->carousel_image }}"><img src="/{{ $carousel_image->carousel_image }}" width="100"/></a></td>
+                            <td><a target="_blank" href="/api/public/{{ $carousel_image->carousel_image }}"><img src="/api/public/{{ $carousel_image->carousel_image }}" width="100"/></a></td>
+                            <td>{{ $carousel_image->main_section->main_section_name}}</td>
                             <td class="text-center">
                             <a class="btn btn-danger" href="#"
                                 onclick="event.preventDefault();

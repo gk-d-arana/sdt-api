@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CarouselImages;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class CarouselImagesController extends Controller
@@ -20,6 +21,14 @@ class CarouselImagesController extends Controller
     public function index()
     {
         $carousel_images = CarouselImages::all();
-        return response()->json(["data"=>$carousel_images]);
+        $data = new Collection();
+        for ($i=0; $i < count($carousel_images) ; $i++) {
+            $main_section = $carousel_images[$i]->main_section;
+            $data->push([
+                "carousel_image" => $carousel_images[$i]->carousel_image,
+                "main_section" => $main_section
+            ]);
+        }
+        return response()->json(["data"=>$data]);
     }
 }

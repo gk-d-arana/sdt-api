@@ -12,5 +12,7 @@ class MainSection extends Model
     public function sections(){
         return $this->hasMany(Section::class);
     }
-
+    public function carousel_imaegs(){
+        return $this->belongsTo(CarouselImages::class);
+    }
 }

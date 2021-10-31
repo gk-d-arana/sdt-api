@@ -121,7 +121,7 @@
                             <th scope="row">{{ $section->id }}</th>
                             <td>{{ $section->section_name }}</td>
                             <td class="text-center">
-                              <a class="btn btn-primary" href="/admin/section/{{$section->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
+                              <a class="btn btn-primary" href="/api/public/admin/section/{{$section->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
                             <a class="btn btn-danger" href="#"
                                 onclick="event.preventDefault();
                                 document.getElementById('delete-form-{{ $section->id }}').submit();">

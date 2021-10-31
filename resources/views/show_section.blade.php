@@ -64,7 +64,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <a href="/{{ $section->section_image }}"><img  src="/{{$section->section_image}}" width="200"/></a>
+                            <a href="/api/public/{{ $section->section_image }}"><img  src="/api/public/{{$section->section_image}}" width="200"/></a>
 
                         </div>
 

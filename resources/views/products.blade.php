@@ -121,7 +121,7 @@
                             <th scope="row">{{ $product->id }}</th>
                             <td>{{ $product->product_name }}</td>
                             <td class="text-center">
-                              <a class="btn btn-primary" href="/admin/product/{{$product->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
+                              <a class="btn btn-primary" href="/api/public/admin/product/{{$product->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
                             <a class="btn btn-danger" href="#"
                                 onclick="event.preventDefault();
                                 document.getElementById('delete-form-{{ $product->id }}').submit();">
