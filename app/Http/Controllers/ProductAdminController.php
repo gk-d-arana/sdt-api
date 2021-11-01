@@ -57,6 +57,8 @@ class ProductAdminController extends Controller
         $product = new Product();
         $product->product_name = $request->product_name;
         $product->product_description = $request->product_description;
+        $product->product_arabic_name = $request->product_arabic_name;
+        $product->product_arabic_description = $request->product_arabic_description;
         $product->product_image=$imageName;
         $product->section_id = $section_id;
         $product->save();
@@ -95,7 +97,10 @@ class ProductAdminController extends Controller
      */
     public function update(Request $request, $id) {
         $product = Product::find($id)->first();
-        $product->update($request->except(['_token', 'product_image']));
+        $product->product_name = $request->product_name;
+        $product->product_description = $request->product_description;
+        $product->product_arabic_name = $request->product_arabic_name;
+        $product->product_arabic_description = $request->product_arabic_description;
         $product->section_id = $request->product_section;
         if($request->hasFile('product_image')){
             $imageName = time().'.'.$request->file('product_image')->getClientOriginalExtension();

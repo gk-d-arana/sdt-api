@@ -57,6 +57,8 @@ class SectionAdminController extends Controller
         $section = new Section();
         $section->section_name = $request->section_name;
         $section->section_description = $request->section_description;
+        $section->section_arabic_name = $request->section_arabic_name;
+        $section->section_arabic_description = $request->section_arabic_description;
         $section->section_image=$imageName;
         $section->main_section_id = $main_section_id;
         $section->save();
@@ -95,7 +97,10 @@ class SectionAdminController extends Controller
      */
     public function update(Request $request, $id) {
         $section = Section::find($id)->first();
-        $section->update($request->except(['_token', 'section_image']));
+        $section->section_name = $request->section_name;
+        $section->section_description = $request->section_description;
+        $section->section_arabic_name = $request->section_arabic_name;
+        $section->section_arabic_description = $request->section_arabic_description;
         $section->main_section_id=$request->section_main_section;
         if($request->hasFile('section_image')){
             $imageName = time().'.'.$request->file('section_image')->getClientOriginalExtension();

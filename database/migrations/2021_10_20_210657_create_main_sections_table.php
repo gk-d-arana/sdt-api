@@ -17,6 +17,8 @@ class CreateMainSectionsTable extends Migration
             $table->id();
             $table->string('main_section_name');
             $table->text('main_section_description');
+            $table->string('main_section_arabic_name');
+            $table->text('main_section_arabic_description');
             $table->string('main_section_image')->nullable();
             $table->timestamps();
         });

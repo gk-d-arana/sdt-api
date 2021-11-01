@@ -43,6 +43,8 @@ class MainSectionAdminController extends Controller
         $data = $request->validate([
             "main_section_name"=>"required|string",
             "main_section_description"=>"required|string",
+            "main_section_arabic_name"=>"required|string",
+            "main_section_arabic_description"=>"required|string",
             "main_section_image"=>"required"
         ]);
         $imageName = null;
@@ -53,6 +55,8 @@ class MainSectionAdminController extends Controller
         $main_section = new MainSection();
         $main_section->main_section_name = $request->main_section_name;
         $main_section->main_section_description = $request->main_section_description;
+        $main_section->main_section_arabic_name = $request->main_section_arabic_name;
+        $main_section->main_section_arabic_description = $request->main_section_arabic_description;
         $main_section->main_section_image=$imageName;
         $main_section->save();
         return redirect('/admin/main_sections/')->with('success','Main Section Added successfully');
@@ -89,12 +93,20 @@ class MainSectionAdminController extends Controller
      */
     public function update(Request $request, $id) {
         $main_section = MainSection::find($id)->first();
-        $main_section->update($request->except(['_token', 'main_section_image']));
+
+
+        $main_section->main_section_name = $request->main_section_name;
+        $main_section->main_section_description = $request->main_section_description;
+        $main_section->main_section_arabic_name = $request->main_section_arabic_name;
+        $main_section->main_section_arabic_description = $request->main_section_arabic_description;
+
+
         if($request->hasFile('main_section_image')){
             $imageName = time().'.'.$request->file('main_section_image')->getClientOriginalExtension();
             $request->file('main_section_image')->move(public_path(), $imageName);
             $main_section->main_section_image=$imageName;
         }
+
         $main_section->save();
         return redirect('/admin/main_sections/')->with('success','Main Section Updated successfully');
     }

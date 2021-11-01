@@ -47,11 +47,38 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="section_arabic_name" class=" col-form-label text-md-right">{{ __('Section Arabic Name') }}</label>
+
+                                        <div class="">
+                                            <input id="section_arabic_name" type="text" class="form-control @error('section_arabic_name') is-invalid @enderror" name="section_arabic_name" value="" autocomplete="section_arabic_name" autofocus>
+
+                                            @error('section_arabic_name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="section_description" class=" col-form-label text-md-right">{{ __('Section Description') }}</label>
                                         <div class="">
                                             <textarea style="white-space: normal" id="section_description" class="form-control @error('section_description') is-invalid @enderror" name="section_description">
                                             </textarea>
                                             @error('section_description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="section_arabic_description" class=" col-form-label text-md-right">{{ __('Section Arabic Description') }}</label>
+                                        <div class="">
+                                            <textarea style="white-space: normal" id="section_arabic_description" class="form-control @error('section_arabic_description') is-invalid @enderror" name="section_arabic_description">
+                                            </textarea>
+                                            @error('section_arabic_description')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -112,6 +139,7 @@
                           <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Section Name</th>
+                            <th scope="col">Section Arabic Name</th>
                             <th class="text-center" scope="col">Actions</th>
                           </tr>
                         </thead>
@@ -120,8 +148,9 @@
                           <tr>
                             <th scope="row">{{ $section->id }}</th>
                             <td>{{ $section->section_name }}</td>
+                            <td>{{ $section->section_arabic_name }}</td>
                             <td class="text-center">
-                              <a class="btn btn-primary" href="/api/public/admin/section/{{$section->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
+                              <a class="btn btn-primary" href="{{ route('section-details.show', ["id"=>$section->id]) }}"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
                             <a class="btn btn-danger" href="#"
                                 onclick="event.preventDefault();
                                 document.getElementById('delete-form-{{ $section->id }}').submit();">

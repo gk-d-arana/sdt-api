@@ -22,12 +22,39 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="section_arabic_name" class=" col-form-label text-md-right">{{ __('Section Arabic Name') }}</label>
+
+                            <div class="">
+                                <input id="section_arabic_name" type="text" class="form-control @error('section_arabic_name') is-invalid @enderror" name="section_arabic_name" value="{{ $section->section_arabic_name }}" autocomplete="section_arabic_name" autofocus>
+
+                                @error('section_arabic_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label for="section_description" class=" col-form-label text-md-right">{{ __('Section Description') }}</label>
                             <div class="">
                                 <textarea style="white-space: normal" id="section_description" class="form-control @error('section_description') is-invalid @enderror" name="section_description">
                                     {{ $section->section_description }}
+                                </textarea>
+                                @error('section_description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="section_arabic_description" class=" col-form-label text-md-right">{{ __('Section Arabic Description') }}</label>
+                            <div class="">
+                                <textarea style="white-space: normal" id="section_arabic_description" class="form-control @error('section_arabic_description') is-invalid @enderror" name="section_arabic_description">
+                                    {{ $section->section_arabic_description }}
                                 </textarea>
                                 @error('section_description')
                                     <span class="invalid-feedback" role="alert">

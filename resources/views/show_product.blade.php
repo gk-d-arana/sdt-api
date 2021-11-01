@@ -22,14 +22,39 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label for="product_description" class=" col-form-label text-md-right">{{ __('Product Description') }}</label>
+                            <label for="product_arabic_name" class=" col-form-label text-md-right">{{ __('Product Arabic Name') }}</label>
+
+                            <div class="">
+                                <input id="product_arabic_name" type="text" class="form-control @error('product_arabic_name') is-invalid @enderror" name="product_arabic_name" value="{{ $product->product_arabic_name }}" autocomplete="product_arabic_name" autofocus>
+
+                                @error('product_arabic_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_arabic_description" class=" col-form-label text-md-right">{{ __('Product Description') }}</label>
                             <div class="">
                                 <textarea style="white-space: normal" id="product_description" class="form-control @error('product_description') is-invalid @enderror" name="product_description">
                                     {{ $product->product_description }}
                                 </textarea>
                                 @error('product_description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_arabic_description" class=" col-form-label text-md-right">{{ __('Product Arabic Description') }}</label>
+                            <div class="">
+                                <textarea style="white-space: normal" id="product_arabic_description" class="form-control @error('product_arabic_description') is-invalid @enderror" name="product_arabic_description">
+                                    {{ $product->product_arabic_description }}
+                                </textarea>
+                                @error('product_arabic_description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

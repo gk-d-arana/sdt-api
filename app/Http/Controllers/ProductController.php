@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
         public function index(Request $request){
         $section_id = $request->section_id;
-        $products = Product::where('section_id', $section_id)->select( "product_name", "product_description", "product_image")->get();
+        $products = Product::where('section_id', $section_id)->select( "product_name", "product_description",  "product_arabic_name", "product_arabic_description","product_image")->get();
         return response()->json(['products' => $products]);
     }
     public function latest_products(Request $request){

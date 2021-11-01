@@ -47,6 +47,19 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="product_arabic_name" class=" col-form-label text-md-right">{{ __('Product Arabic Name') }}</label>
+
+                                        <div class="">
+                                            <input id="product_arabic_name" type="text" class="form-control @error('product_arabic_name') is-invalid @enderror" name="product_arabic_name" value="" autocomplete="product_arabic_name" autofocus>
+
+                                            @error('product_arabic_name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="product_description" class=" col-form-label text-md-right">{{ __('Product Description') }}</label>
                                         <div class="">
                                             <textarea style="white-space: normal" id="product_description" class="form-control @error('product_description') is-invalid @enderror" name="product_description">
@@ -58,9 +71,20 @@
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="product_image" class=" col-form-label text-md-right">{{ __('Main Sction Image') }}</label>
+                                        <label for="product_arabic_description" class=" col-form-label text-md-right">{{ __('Product Arabic Description') }}</label>
+                                        <div class="">
+                                            <textarea style="white-space: normal" id="product_arabic_description" class="form-control @error('product_arabic_description') is-invalid @enderror" name="product_arabic_description">
+                                            </textarea>
+                                            @error('product_arabic_description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="product_image" class=" col-form-label text-md-right">{{ __('Product Image') }}</label>
                                         <div class="">
                                             <input id="product_image" type="file" class="form-control @error('product_image') is-invalid @enderror" name="product_image" autocomplete="product_image">
 
@@ -112,6 +136,7 @@
                           <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Product Name</th>
+                            <th scope="col">Product Arabic Name</th>
                             <th class="text-center" scope="col">Actions</th>
                           </tr>
                         </thead>
@@ -120,8 +145,10 @@
                           <tr>
                             <th scope="row">{{ $product->id }}</th>
                             <td>{{ $product->product_name }}</td>
+                            <td>{{ $product->product_arabic_name }}</td>
+
                             <td class="text-center">
-                              <a class="btn btn-primary" href="/api/public/admin/product/{{$product->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
+                              <a class="btn btn-primary" href="{{ route('product-details.show', ["id"=>$product->id]) }}"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
                             <a class="btn btn-danger" href="#"
                                 onclick="event.preventDefault();
                                 document.getElementById('delete-form-{{ $product->id }}').submit();">

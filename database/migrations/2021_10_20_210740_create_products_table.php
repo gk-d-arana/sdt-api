@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->string('product_name');
             $table->text('product_description');
+            $table->string('product_arabic_name');
+            $table->text('product_arabic_description');
             $table->string('product_image');
             $table->timestamps();
 

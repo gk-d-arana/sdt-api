@@ -19,6 +19,8 @@ class CreateSectionsTable extends Migration
             $table->foreign('main_section_id')->references('id')->on('main_sections')->onDelete('cascade');
             $table->string('section_name');
             $table->text('section_description');
+            $table->string('section_arabic_name');
+            $table->text('section_arabic_description');
             $table->string('section_image');
             $table->timestamps();
 

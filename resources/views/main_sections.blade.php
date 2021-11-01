@@ -45,6 +45,19 @@
                                             @enderror
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="main_section_arabic_name" class=" col-form-label text-md-right">{{ __('Main Section Arabic Name') }}</label>
+
+                                        <div class="">
+                                            <input id="main_section_arabic_name" type="text" class="form-control @error('main_section_arabic_name') is-invalid @enderror" name="main_section_arabic_name" value="" autocomplete="main_section_arabic_name" autofocus>
+
+                                            @error('main_section_arabic_name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="main_section_description" class=" col-form-label text-md-right">{{ __('Main Section Description') }}</label>
@@ -58,7 +71,18 @@
                                             @enderror
                                         </div>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="main_section_arabic_description" class=" col-form-label text-md-right">{{ __('Main Section Arabic Description') }}</label>
+                                        <div class="">
+                                            <textarea style="white-space: normal" id="main_section_arabic_description" class="form-control @error('main_section_arabic_description') is-invalid @enderror" name="main_section_arabic_description">
+                                            </textarea>
+                                            @error('main_section_arabic_description')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="main_section_image" class=" col-form-label text-md-right">{{ __('Main Section Image') }}</label>
                                         <div class="">
@@ -95,6 +119,7 @@
                           <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Main Section Name</th>
+                            <th scope="col">Main Section Arabic Name</th>
                             <th class="text-center" scope="col">Actions</th>
                           </tr>
                         </thead>
@@ -103,8 +128,9 @@
                           <tr>
                             <th scope="row">{{ $main_section->id }}</th>
                             <td>{{ $main_section->main_section_name }}</td>
+                            <td>{{ $main_section->main_section_arabic_name }}</td>
                             <td class="text-center">
-                              <a class="btn btn-primary" href="/api/public/admin/main_section/{{$main_section->id}}/"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
+                              <a class="btn btn-primary" href="{{ route('main_section-details.show', ["id"=>$main_section->id]) }}"> <i  class="fa fa-pencil mr-1" aria-hidden="true"></i>Edit</a>
                             <a class="btn btn-danger" href="#"
                                 onclick="event.preventDefault();
                                 document.getElementById('delete-form-{{ $main_section->id }}').submit();">
